@@ -128,7 +128,7 @@ final class ZttpTests: XCTestCase {
         do {
             let response = try Zttp
                 .withSession(session)
-                .withHeader(headers: ["Accept" : "text/html"])
+                .withHeaders(headers: ["Accept" : "text/html"])
                 .afterSend(then: {
                     expectation.fulfill()
                 })

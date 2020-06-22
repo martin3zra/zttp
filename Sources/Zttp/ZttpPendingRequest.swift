@@ -43,7 +43,7 @@ public class ZttpPendingRequest {
     public func asJSON() -> ZttpPendingRequest {
         let this = ZttpPendingRequest.default
         this.contentType = .json
-        return this.withHeader(headers: ["Content-Type" : "application/json"])
+        return this.withHeaders(headers: ["Content-Type" : "application/json"])
     }
     
     /// asFormParams set the `Content-Type` header of the current `Request` as `application/x-www-form-urlencoded`
@@ -52,7 +52,7 @@ public class ZttpPendingRequest {
     {
         let this = ZttpPendingRequest.default
         this.contentType = .formData
-        return this.withHeader(headers: ["Content-Type" : "application/x-www-form-urlencoded"])
+        return this.withHeaders(headers: ["Content-Type" : "application/x-www-form-urlencoded"])
     }
     
     /// accept set the `Accept` header of the current `Request` equal to the given value.
@@ -60,14 +60,14 @@ public class ZttpPendingRequest {
     ///    - header: `String` value to be use as the `Accept` header of the `Request`
     /// - Returns: A new instance of `ZttpPendingRequest`.
     public func accept(header: String) -> ZttpPendingRequest {
-        return withHeader(headers: ["Accept" : header])
+        return withHeaders(headers: ["Accept" : header])
     }
     
     /// withHeader set the header values of the current `Request` equal to the given values.
     /// - Parameters:
     ///    - headers: `[String: String]` values to be use as the headers of the `Request`
     /// - Returns: A new instance of `ZttpPendingRequest`.
-    public func withHeader(headers: [String: String]) -> ZttpPendingRequest {
+    public func withHeaders(headers: [String: String]) -> ZttpPendingRequest {
         let this = ZttpPendingRequest.`default`
         
         if var _headers = this.options["header"] as? [String: String] {

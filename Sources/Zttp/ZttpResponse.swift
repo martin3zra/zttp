@@ -29,11 +29,6 @@ public class ZttpResponse {
         return self.response?.allHeaderFields[key] as? String
     }
     
-//    func query() -> String {
-        
-//        return self.response.
-//    }
-    
     func headers() -> [String : Any]? {
         
         return self.response?.allHeaderFields as? [String: Any]
@@ -96,16 +91,16 @@ public class ZttpResponse {
         return try data.decoded() as T
     }
     
-    public func exception() -> ZttpException? {
+    public func `throw`() throws -> ZttpException? {
         
         if self.isOk() {
             return nil
         }
         
         if self.status() == 0 {
-            return ZttpException(.InternalServerError)
+            throw ZttpException(.InternalServerError)
         }
         
-        return ZttpException(for: self.status())
+        throw ZttpException(for: self.status())
     }
 }
