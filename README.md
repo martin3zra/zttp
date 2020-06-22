@@ -13,7 +13,7 @@ do {
 
 	response->status()
 	// Int
-	
+
 	response->isOk()
 	// true / false
 
@@ -21,13 +21,13 @@ do {
 	if !response.isOk() {
     	throw response.exception()!
     }
-    
+
     // decode the response directly
     let users : UserFeed = try response.decode()
-    
+
 } catch let err {
 	print(err)
-	//or 
+	//or
 	print((err as! ZttpException).httpError!)
 }
 ```
