@@ -60,6 +60,21 @@ let response = Zttp.asFormParams().post("http://test.com/users", params: [
 ])
 ```
 
+### Decode response
+You may prefer to decode the response into a `struct` or `Dictionary`, the `struct` need conform the `Decodable` protocol.
+
+```swift
+struct User : Codable {
+    let uuid: String
+    let name: String
+}
+
+let response = Zttp.get("http://test.com/users")
+
+// decode the response directly
+let users : [User] = try response.decode()
+```
+
 # Headers
 
 Headers may be added to requests using the `withHeaders` method, This `withHeaders` method accepts an dictionary of key / value pairs.
@@ -156,4 +171,3 @@ curl -k -X GET \
 -H "Accept: application/json" \
 http://test.com
 ```
-
