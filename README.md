@@ -123,7 +123,7 @@ If you have a response instance  and would like to throw an instance of `ZttpExc
 let response = Zttp::post(...)
 
 // Throw an exception if a client or server error occurred....
-response->throw()
+try response->throw()
 ```
 # Options
 
