@@ -91,10 +91,10 @@ public class ZttpResponse {
         return try data.decoded() as T
     }
     
-    public func `throw`() throws -> ZttpException? {
+    public func `throw`() throws {
         
         if self.isOk() {
-            return nil
+            return
         }
         
         if self.status() == 0 {
